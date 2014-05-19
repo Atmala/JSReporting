@@ -1,0 +1,22 @@
+<div class="statistic" ng-controller="statisticCtrl">
+    <div class="module-top">
+        {{projectStatTitle}}
+    </div>
+    <div class="module projModule">
+
+    </div>
+
+    <div class="module-top">
+        {{monthStatTitle}}
+    </div>
+    <div class="module chart monthModule">
+        <div class="row" ng-repeat="statItem in monthStatistic">
+            <div class="span3 text">{{statItem.title}}</div>
+            <div class="span6 borderedBar">
+                <div class="bar" ng-style="statItem.style">{{statItem.width}}%</div>
+            </div>
+            <div class="span3 text"><b>{{statItem.current}}</b>({{statItem.total}})</div>
+        </div>
+    </div>
+
+</div>

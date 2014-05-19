@@ -1,0 +1,38 @@
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <div class="nav-collapse" id="main-menu">
+                <ul class="nav" id="main-menu-left">
+                    <li><a onclick="#">Generate</a></li>
+                    <% include 'download.ect' %>
+                </ul>
+                <ul class="nav pull-right" id="main-menu-right">
+                    <li>
+                        <% if @userName?.length : %>
+                        <div class="userName"> Hello <%- @userName %> </div>
+                        <% else : %>
+                        <a rel="tooltip" target="_blank" href="\auth\google">Login</a>
+                        <% end %>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<header class="jumbotron subhead" id="overview">
+  <div class="row">
+    <div class="span6">
+      <h1>Time report manager</h1>
+      <p class="lead">Generate PTR and report statistic.</p>
+    </div>
+    <div class="span6">
+      <div class="bsa well">
+          <div class="bsarocks"></div>
+      </div>
+    </div>
+  </div>
+
+  <% include 'navbar.ect' %>
+
+</header>

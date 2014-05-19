@@ -1,0 +1,76 @@
+<section id="timeReport" ng-cloak>
+
+    <div ng-controller="timeReportCtrl" id="reportForm" >
+        <form class="well form-search" ng-submit="addReport(reportItem)" name="reportForm">
+            <input class="input-medium datepicker" type="text" ng-model="reportItem.date" data-date-format="DD, MM d" bs-datepicker required >
+            <select id="selProject" class="select input-medium empty" ng-model="reportItem.project"
+                    ng-options="proj as proj for proj in allProjects" required ng-change="">
+                <option value="" class="empty">Project</option>
+            </select>
+            <input id="taskInp" type="text" placeholder="Task" ng-model="reportItem.task" depends-On="selProject">
+            <select id="selWorkType" class="input-small select empty" ng-model="reportItem.workType"
+                    ng-options="wt as wt for wt in allWorkTypes" depends-On="selProject">
+                <option value="" class="empty">Type</option>
+            </select>
+
+            <input id="durationInp" name="duration" type="text" class="input-mini" placeholder="Duration"
+                   ng-model="reportItem.duration" day-Duration depends-On="selProject">
+            <button type="submit" class="btn btn-success" ng-disabled="reportForm.$invalid" >Save</button>
+
+            <div class="input-help" ng-show="!reportForm.duration.$pristine && reportForm.duration.$error.day">
+                <span class="errorText">Duration should be between 1 and 24</span>
+            </div>
+
+        </form>
+
+    </div>
+
+    <div ng-controller="gridController">
+        <table class="table table-bordered table-striped table-hover"  ng-init="init(gridData)">
+            <thead>
+            <tr>
+                <th>Date</th>
+                <th>Project</th>
+                <th>Task</th>
+                <th>Type</th>
+                <th>Duration</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="report in page"  ng-click="editItem(report)">
+                <td>{{report.date.toString('MMMM d')}}</td>
+                <td>{{report.project}}</td>
+                <td>{{report.task}}</td>
+                <td>{{report.workType}}</td>
+                <td>{{report.duration}}</td>
+                <td>
+                    <a href="#" class="rowAction" ng-click="editItem(report)">Edit</a>
+                    <a href="#" class="rowAction" ng-click="deleteItem(report)">Del</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="pagination pagination-centered" ng-model="pagingOptions">
+            <ul >
+                <li ng-class="{disabled: pagingOptions.currentPage == 1}"
+                    ng-click="pagingOptions.currentPage = pagingOptions.currentPage - 1">
+                    <a href="#" >&larr;</a>
+                </li>
+                <li ng-repeat="n in [] | range:pagingOptions.pagesCount" ng-class="{active: pagingOptions.currentPage == n}" ng-click="pagingOptions.currentPage = n">
+                    <a href="#">{{n}}</a>
+                </li>
+                <li ng-class="{disabled: pagingOptions.currentPage == pagingOptions.pagesCount}"
+                    ng-click="pagingOptions.currentPage = pagingOptions.currentPage + 1">
+                    <a href="#">&rarr;</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <ul class="pager">
+        <li class="previous disabled"><a href="#">&larr; Prev month</a></li>
+        <li class="next disabled"><a href="#">Next month &rarr;</a></li>
+    </ul>
+</section>

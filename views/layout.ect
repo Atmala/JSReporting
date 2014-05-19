@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><%- @title %></title>
+
+        <!----------- Javascript------------->
+        <script data-main="/js/load.js" src="/js/lib/require.js"></script>
+        <script type="text/javascript" src="https://apis.google.com/js/client.js"></script>
+
+
+        <!----------- Styles ------------->
+        <%- css 'bootstrap.min' %>
+        <%- css 'bootstrap-responsive.min' %>
+        <%- css 'bootswatch' %>
+        <%- css 'reportMain' %>
+        <%- css 'datepicker' %>
+
+	</head>
+    <body class="preview" data-spy="scroll" data-target=".subnav" data-offset="80">
+        <div class="container">
+
+            <% include 'navbar.ect' %>
+
+            <section id="typography">
+                <% content %>
+                <% include 'footer.ect' %>
+            </section>
+        </div>
+	</body>
+</html>

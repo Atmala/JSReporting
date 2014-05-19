@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <%- css 'bootstrap.min' %>
+    <%- css 'bootstrap-responsive.min' %>
+    <%- css 'bootswatch' %>
+    <%- css 'reportMain' %>
+    <%- css 'datepicker' %>
+
+    <%- js 'lib/jquery' %>
+    <%- js 'lib/bootstrap/bootstrap.min' %>
+    <%- js 'lib/angular/angular' %>
+    <%- js 'lib/angular/angular-strap' %>
+    <%- js 'controllers/testController' %>
+    <%- js 'lib/bootstrap/bootstrap-datepicker' %>
+    <title></title>
+</head>
+<body  ng-app="test" ng-controller="testCtrl">
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#inputDatepicker').datepicker()
+    })
+</script>
+{{"Date: " + td}}
+    <div class="control-group input-append">
+        <label for="inputDatepicker" class="label" style="margin-right:6px;">date</label>
+        <input id="inputDatepicker" class="input-small" type="text" ng-model="td" data-date-format="dd/mm/yyyy" bs-datepicker>
+        <button type="button" class="btn" data-toggle="datepicker"><i class="icon-calendar"></i></button>
+
+    </div>
+
+</body>
+</html>

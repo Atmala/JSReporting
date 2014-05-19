@@ -1,0 +1,14 @@
+<li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Download <b class="caret"></b></a>
+    <ul class="dropdown-menu">
+        <li><a href="#">TR as csv</a></li>
+        <li><a href="#">TR as xlsx</a></li>
+        <li><a href="#">TR as pdf</a></li>
+        <li class="divider"></li>
+        <li><a href="#">Month statistic</a></li>
+        <li><a href="#">Year statistic</a></li>
+        <li class="divider"></li>
+        <li><a href="#" onclick="reportApp.ReportView.getReportByName('<%- @userReportName %>')">Download my report</a></li>
+        <li><a href="#" onclick="reportApp.ReportView.getAllReports()">Download all reports</a></li>
+    </ul>
+</li>
